@@ -26,7 +26,7 @@ export default function LoadingScreen() {
     <View style={styles.container}>
       {/* App Logo */}
       <Image
-        source={Constants.assets.loading}
+        source={Constants.assets.logo}
         style={styles.loading}
       />
 

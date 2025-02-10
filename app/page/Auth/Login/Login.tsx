@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 import styles from "./Login.styles";
-
 import { useRouter } from "expo-router";
 import Constants from "@/app/config/constants";
 
@@ -19,10 +18,10 @@ export default function Login() {
   const handleRegister = () => {
     router.push("/page/Auth/Register/Register");
   };
-
+0
   return (
     <View style={styles.container}>
-      {/* Red Upper Area */}
+      {/* blue Upper Area */}
       <View style={styles.redArea}>
         <Image
           source={Constants.assets.logo}

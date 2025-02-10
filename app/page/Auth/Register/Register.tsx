@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 import styles from "./Register.styles";
 import Constants from "@/app/config/constants";
+import { useRouter } from "expo-router";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -9,9 +10,11 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isTermsAccepted, setIsTermsAccepted] = useState(false);
+  const router = useRouter();
 
   const handleRegister = () => {
     console.log("Register clicked", { name, email, password, confirmPassword, isTermsAccepted });
+    router.push("/page/MainStructure/Main");
   };
 
   return (
