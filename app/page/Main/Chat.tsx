@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const Test3 = () => {
+const Chat = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>This is Test Page 3</Text>
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Test3;
+export default Chat;
