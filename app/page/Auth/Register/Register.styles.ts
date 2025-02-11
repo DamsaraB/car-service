@@ -15,9 +15,9 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     fontSize: 30,
-    color: "#A60606",
+    color: "#0098FF",
     textAlign: "center",
-    marginBottom: 20,
+    marginBottom: -15,
     fontFamily: "ABeeZee",
     paddingHorizontal: 80,
     paddingVertical: 25,
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   tabContainer: {
     flexDirection: "row",
     justifyContent: "center",
-    marginBottom: 20,
+    marginBottom: 10,
   },
   tab: {
     fontSize: 16,
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     borderColor: "#ddd",
     borderRadius: 8,
     padding: 12,
-    marginBottom: 15,
+    marginBottom: 20,
     backgroundColor: "#f9f9f9",
   },
   checkboxContainer: {
@@ -65,11 +65,11 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   linkText: {
-    color: "#D32F2F",
+    color: "#0098FF",
     textDecorationLine: "underline",
   },
   button: {
-    backgroundColor: "#A60606",
+    backgroundColor: "#0098FF",
     paddingVertical: 15,
     borderRadius: 8,
     alignItems: "center",
@@ -79,38 +79,20 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
   },
-  footer: {
-    // alignItems: "center",
-    // marginTop: 30,
-    // borderTopWidth: 1,
-    // borderTopColor: "#ddd",
-    // paddingTop: 20,
-    position: "absolute",
-    width: "auto",
-    height: "12%",
-    left: 0,
-    bottom: 0,
-    backgroundColor: "#A60606",
-    shadowColor: "rgba(59, 89, 152, 0.27)",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 1,
-    shadowRadius: 114,
-  },
-  footerLogo: {
-    marginTop: -50,
-    width: 180,
-    height: 180,
-    resizeMode: "contain",
-    opacity: 0.5,
-    //marginBottom: 10,
+  helpText: {
+    fontSize: 14,
+    color: "#555",
+    marginVertical: 10,
+    textAlign: "center",
   },
   footerText: {
+    fontSize: 14,
+    color: "#555",
     textAlign: "center",
+  },
+  signUpText: {
+    color: "#0098FF",
     fontWeight: "bold",
-    color: "#fff",
-    fontSize: 12,
-    marginTop: -85,
-    paddingHorizontal: 80,
   },
 });
 

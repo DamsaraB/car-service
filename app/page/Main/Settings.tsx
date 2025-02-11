@@ -8,8 +8,13 @@ import {
   StyleSheet,
 } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { router, useRouter } from "expo-router";
 
 const Settings = () => {
+  const handleLogin = () => {
+    router.push("/page/Auth/Login/Login");
+  };
+
   return (
     <ScrollView style={styles.container}>
       {/* Header */}
@@ -47,7 +52,7 @@ const Settings = () => {
           extraText="ON"
         />
         <OptionItem icon="language" text="Language" extraText="English" />
-        <OptionItem icon="lock-outline" text="Security" />
+        <OptionItem icon="lock-outline" text="Security" onPress={handleLogin} />
         <OptionItem icon="brightness-6" text="Theme" extraText="Light mode" />
       </View>
 
@@ -62,8 +67,8 @@ const Settings = () => {
   );
 };
 
-const OptionItem = ({ icon, text, extraText }: { icon: any; text: any; extraText?: any }) => (
-  <TouchableOpacity style={styles.optionItem}>
+const OptionItem = ({ icon, text, extraText, onPress }: { icon: any; text: any; extraText?: any; onPress?: () => void }) => (
+  <TouchableOpacity style={styles.optionItem} onPress={onPress}>
     <MaterialIcons name={icon} size={24} color="#000" />
     <View style={styles.optionTextContainer}>
       <Text style={styles.optionText}>{text}</Text>

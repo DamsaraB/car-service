@@ -16,18 +16,17 @@ export default function Register() {
     console.log("Register clicked", { name, email, password, confirmPassword, isTermsAccepted });
     router.push("/page/MainStructure/Main");
   };
+  const handleLogin = () => {
+    router.push("/page/Auth/Login/Login");
+  };
 
   return (
     <View style={styles.container}>
       {/* Welcome Header */}
       <Text style={styles.title}>Welcome</Text>
-      <Text style={styles.subTitle}>Let’s help you to work with postal services</Text>
+      <Text style={styles.subTitle}>Let’s help you to easier your garaje booking</Text>
 
-      {/* Login and Register Tabs */}
-      {/* <View style={styles.tabContainer}>
-        <Text style={styles.tab}>Login</Text>
-        <Text style={styles.activeTab}>Register</Text>
-      </View> */}
+
 
       {/* Form Area */}
       <View style={styles.formArea}>
@@ -35,7 +34,7 @@ export default function Register() {
         <Text style={styles.formAreaText}>Name</Text>
         <TextInput
           style={styles.input}
-          placeholder="ex: Fraddy"
+          placeholder="ex: Kushan"
           placeholderTextColor="#aaa"
           value={name}
           onChangeText={setName}
@@ -45,7 +44,7 @@ export default function Register() {
         <Text style={styles.formAreaText}>Email</Text>
         <TextInput
           style={styles.input}
-          placeholder="ex: fraddy@email.com"
+          placeholder="ex: kushan7@email.com"
           placeholderTextColor="#aaa"
           value={email}
           onChangeText={setEmail}
@@ -89,20 +88,13 @@ export default function Register() {
         <TouchableOpacity
           style={styles.button}
           onPress={handleRegister}
-          disabled={!isTermsAccepted}
+          // disabled={!isTermsAccepted}
         >
           <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
-      </View>
-
-      {/* Footer Area */}
-      <View style={styles.footer}>
-        <Image
-          source={Constants.assets.bird}
-          style={styles.footerLogo}
-        />
+        <Text style={styles.helpText}>Having trouble in Register?</Text>
         <Text style={styles.footerText}>
-          Department of Posts - Sri Lanka\nAll rights reserved by Sri Lankan Government © 2025
+          Alreay have an account? <Text style={styles.signUpText} onPress={handleLogin}> Log in now</Text>
         </Text>
       </View>
     </View>

@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import Constants from "@/app/config/constants";
 import {  TextInput, Image, TouchableOpacity, ScrollView } from 'react-native';
 
 export const Home = () => {
@@ -27,7 +28,17 @@ export const Home = () => {
     <View style={styles.servicesSection}>
       <Text style={styles.servicesTitle}>Our Services</Text>
       <View style={styles.serviceCard}>
-        <Image source={{ uri: 'https://source.unsplash.com/300x200/?car-repair' }} style={styles.serviceImage} />
+        <Image source={Constants.assets.garaje} style={styles.serviceImage} />
+        <Text style={styles.serviceText}>WITH 100% ACCURACY On Car Repairs</Text>
+        <TouchableOpacity style={styles.bookButton}>
+          <Text style={styles.bookButtonText}>BOOK NOW</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+
+    <View style={styles.servicesSection}>
+      <View style={styles.serviceCard}>
+        <Image source={Constants.assets.garaje} style={styles.serviceImage} />
         <Text style={styles.serviceText}>WITH 100% ACCURACY On Car Repairs</Text>
         <TouchableOpacity style={styles.bookButton}>
           <Text style={styles.bookButtonText}>BOOK NOW</Text>
@@ -69,7 +80,7 @@ export const Home = () => {
 const styles = StyleSheet.create({
 container: { 
   flex: 1, 
-  backgroundColor: '#F5F5F5' },
+  backgroundColor: '#F3F3F3' },
 header: { 
   padding: 20, 
   backgroundColor: '#0096FF' },
