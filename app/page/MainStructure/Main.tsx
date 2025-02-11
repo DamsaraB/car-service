@@ -10,7 +10,6 @@ import Test4 from "../Main/NotificationPage";
 import Test5 from "../Main/Settings";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 
-// Create Bottom Tab Navigator
 const Tab = createBottomTabNavigator();
 function CustomTabBarButton({ children, onPress }: { children: any; onPress?: (event: GestureResponderEvent) => void }) {
   return (
@@ -59,7 +58,7 @@ export default function App() {
         />
         <Tab.Screen
           name="Middle"
-          component={Test3} // Middle screen
+          component={Test3} 
           options={{
             tabBarIcon: () => (
               <AntDesign name="wechat" size={25} color="white" allingItems="center"/>

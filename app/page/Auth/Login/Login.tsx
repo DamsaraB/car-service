@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 import styles from "./Login.styles";
+import { Feather } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import Constants from "@/app/config/constants";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
 
   const handleLogin = () => {
@@ -49,25 +51,29 @@ export default function Login() {
         />
 
         {/* Password Input */}
-        <Text style={styles.formAreaText}>Password</Text>
+        <Text style={styles.label}>Password</Text>
+      <View style={styles.passwordContainer}>
         <TextInput
-          style={styles.input}
-          placeholder="Enter your password"
+          style={styles.passwordInput}
+          placeholder="*******"
           placeholderTextColor="#aaa"
+          secureTextEntry={!showPassword}
           value={password}
           onChangeText={setPassword}
-          secureTextEntry
         />
+        <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+          <Feather
+            name={showPassword ? "eye-off" : "eye"}
+            size={20}
+            color="#aaa"
+          />
+        </TouchableOpacity>
+      </View>
 
         {/* Login Button */}
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Login In</Text>
         </TouchableOpacity>
-
-        {/* New Button to Navigate to Test Page */}
-        {/* <TouchableOpacity style={styles.button} onPress={() => router.push("/page/Test/TestPage")}>
-          <Text style={styles.buttonText}>Go to Test Page</Text>
-        </TouchableOpacity> */}
 
         <Text style={styles.helpText}>Having trouble in sign in?</Text>
         <Text style={styles.footerText}>

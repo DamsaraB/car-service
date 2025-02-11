@@ -1,25 +1,25 @@
-import React, { useState, useCallback } from "react";
-import { View, StyleSheet } from "react-native";
-import { GiftedChat, IMessage } from "react-native-gifted-chat";
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
 const Chat = () => {
-  const [messages, setMessages] = useState<IMessage[]>([]);
-
-  const onSend = useCallback((newMessages: IMessage[] = []) => {
-    setMessages((previousMessages) =>
-      GiftedChat.append(previousMessages, newMessages)
-    );
-  }, []);
-
   return (
     <View style={styles.container}>
-      <GiftedChat messages={messages} onSend={onSend} user={{ _id: 1 }} />
+      <Text style={styles.text}>This is Test Page 3</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff" },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
+  text: {
+    fontSize: 20,
+    color: '#000',
+  },
 });
 
 export default Chat;

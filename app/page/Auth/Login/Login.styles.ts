@@ -78,6 +78,21 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     textAlign: "center",
   },
+  passwordContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#ddd",
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    marginTop: 5,
+    height: 45,
+  },
+  passwordInput: {
+    flex: 1,
+    fontSize: 14,
+  },
+
   footerText: {
     fontSize: 14,
     color: "#555",
