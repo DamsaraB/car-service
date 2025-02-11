@@ -1,31 +1,44 @@
 import { useRouter } from "expo-router";
 import { useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { View, Text, ActivityIndicator } from "react-native";
 
 export default function Index() {
-  // return (
-  //   <View
-  //     style={{
-  //       flex: 1,
-  //       justifyContent: "center",
-  //       alignItems: "center",
-  //       backgroundColor: "#fff",
-  //     }}
-  //   >
-  //     <Text style={{ fontSize: 20, color: "#ff0000", fontWeight: "bold" }}>
-  //       Welcome to My App
-  //     </Text>
-  //   </View>
-  // );
-
   const router = useRouter();
 
   useEffect(() => {
-    // Delay the navigation to allow the layout to mount first
-    const timer = setTimeout(() => {
-      router.replace("/page/LoadingScreen/LoadingScreen");
-    }, 100); 
+    const storeUserDataAndNavigate = async () => {
+      // Extract query parameters
+      const params = new URLSearchParams(window.location.search);
+      const customerId = params.get('userId'); 
+      const customerEmail = params.get('email');
+      const customerName = params.get('name');
 
-    return () => clearTimeout(timer); // Clean up the timeout on unmount
+      if (customerId && customerEmail) {
+        try {
+          // Store user information in AsyncStorage
+          await AsyncStorage.setItem('customerId', customerId);
+          await AsyncStorage.setItem('customerEmail', customerEmail);
+          //await AsyncStorage.setItem('customerName', customerName);
+
+          // Navigate to home screen
+          router.replace("/page/LoadingScreen/LoadingScreen");
+        } catch (error) {
+          console.error("Error storing user data:", error);
+        }
+      } else {
+        // Navigate directly if no query parameters
+        router.replace("/page/LoadingScreen/LoadingScreen");
+      }
+    };
+
+    storeUserDataAndNavigate();
   }, [router]);
-  return null;
+
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <ActivityIndicator size="large" color="#0000ff" />
+      <Text>Loading...</Text>
+    </View>
+  );
 }
