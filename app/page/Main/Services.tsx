@@ -3,14 +3,10 @@ import { View, Text, TextInput, Image, TouchableOpacity, ScrollView, StyleSheet 
 import { Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import { router, useRouter } from "expo-router";
 import Icon from "react-native-vector-icons/FontAwesome";
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 const Services = () => {
-  const services = [
-    { id: 1, name: 'Car Repair', icon: 'car' },
-    { id: 2, name: 'Bike Repair', icon: 'bicycle' },
-    { id: 3, name: 'Car Wash', icon: 'cogs' },
-    { id: 4, name: 'Auto Parts', icon: 'tools' },
-  ];
 
 const handleCar = () => {
       router.push("/page/Services/CarRepair");
@@ -31,6 +27,44 @@ const handleCar = () => {
       <Text style={styles.cardHeadTitle}>Repairs</Text>
 
       <View style={styles.card}>
+        <Icon name="car" size={30} color="#000" style={styles.cardIcon} />
+        <View style={styles.cardText}>
+          <Text style={styles.cardTitle}>Car Repair</Text>
+          <Text style={styles.cardSubtitle}>Repair your car</Text>
+          <Text style={styles.cardAction} onPress={handleCar}>Book Now</Text>
+        </View>
+        <TouchableOpacity style={styles.arrowButton}>
+          <Icon name="arrow-right" size={20} color="#000" onPress={handleCar}/>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.card}>
+        <MaterialCommunityIcons name="motorbike" size={40} color="#000" style={styles.cardIcon} />
+        <View style={styles.cardText}>
+          <Text style={styles.cardTitle}>Motor Bike Repair</Text>
+          <Text style={styles.cardSubtitle}>Repair your Bike</Text>
+          <Text style={styles.cardAction} onPress={handleCar}>Book Now</Text>
+        </View>
+        <TouchableOpacity style={styles.arrowButton}>
+          <Icon name="arrow-right" size={20} color="#000" onPress={handleCar} />
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.card}>
+        <MaterialIcons name="electrical-services" size={40} color="#000" style={styles.cardIcon} />
+        <View style={styles.cardText}>
+          <Text style={styles.cardTitle}>Eletric Vehicle Repair</Text>
+          <Text style={styles.cardSubtitle}>Repair your Bike</Text>
+          <Text style={styles.cardAction} onPress={handleCar}>Book Now</Text>
+        </View>
+        <TouchableOpacity style={styles.arrowButton}>
+          <Icon name="arrow-right" size={20} color="#000" onPress={handleCar}/>
+        </TouchableOpacity>
+      </View>
+
+      <Text style={styles.cardHeadTitle}>Service</Text>
+
+      <View style={styles.card}>
         <Icon name="wrench" size={30} color="#000" style={styles.cardIcon} />
         <View style={styles.cardText}>
           <Text style={styles.cardTitle}>Repairs & Maintainance</Text>
@@ -42,14 +76,13 @@ const handleCar = () => {
         </TouchableOpacity>
       </View>
 
-      <Text style={styles.cardHeadTitle}>Cars</Text>
+          <Text style={styles.cardHeadTitle}>Auto-Parts</Text>
 
       <View style={styles.card}>
-        <Icon name="car" size={30} color="#000" style={styles.cardIcon} />
+        <MaterialIcons name="production-quantity-limits" size={30} color="#000" style={styles.cardIcon} />
         <View style={styles.cardText}>
-          <Text style={styles.cardTitle}>Car Repair</Text>
-          <Text style={styles.cardSubtitle}>Book a time & date to repair your car</Text>
-          <Text style={styles.cardAction} onPress={handleCar}>Book Now</Text>
+          <Text style={styles.cardTitle}>Auto Parts </Text>
+          <Text style={styles.cardSubtitle}>you can purchase auto parts your vehicle</Text>
         </View>
         <TouchableOpacity style={styles.arrowButton}>
           <Icon name="arrow-right" size={20} color="#000" />
@@ -71,13 +104,13 @@ const styles = StyleSheet.create({
     padding: 15, 
     backgroundColor: '#fff' },
   headerTitle: { 
-    fontSize: 20, 
+    fontSize: 22, 
     fontWeight: 'bold' },
   searchIcon: { 
     marginRight: 10 },
   subcontainer: {
     paddingHorizontal: 10,
-    marginTop: 30
+    marginTop: 5
     },
     icon: {
       marginRight: 15,
@@ -102,12 +135,13 @@ const styles = StyleSheet.create({
       flex: 1,
     },
     cardHeadTitle: {
-      fontSize: 18,
-      marginBottom: 10,
+      fontSize: 20,
+      marginBottom: 5,
+      marginTop: 10,
       fontWeight: "bold",
     },
     cardTitle: {
-      fontSize: 18,
+      fontSize: 17,
       fontWeight: "bold",
     },
     cardSubtitle: {

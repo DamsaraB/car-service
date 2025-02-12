@@ -13,13 +13,7 @@ const CarRepairBooking = () => {
   const [showTimePicker, setShowTimePicker] = useState(false);
 
   const handleConfirm = () => {
-    console.log({
-      name,
-      serviceType,
-      date,
-      repairPlace,
-      additionalInfo,
-    });
+    router.push("/page/Services/Confirm");
   };
 
   const handleService = () => {
@@ -38,7 +32,7 @@ const CarRepairBooking = () => {
     <View style={styles.container}>
     <View style={styles.header}>
       <Ionicons name="arrow-back" size={24} color="#000" onPress={handleService}/>
-      <Text style={styles.headerTitle}>Car Service</Text>
+      <Text style={styles.headerTitle}>Repair Service</Text>
     </View>
 
       {/* Name Input */}
@@ -77,10 +71,7 @@ const CarRepairBooking = () => {
 
       {/* Buttons */}
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.resetButton} onPress={handleReset}>
-          <Text style={{ color: "#000" }}>Reset</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.confirmButton} onPress={handleService}>
+        <TouchableOpacity style={styles.confirmButton} onPress={handleConfirm}>
           <Text style={{ color: "#fff" }}>Confirm</Text>
         </TouchableOpacity>
       </View>
@@ -128,6 +119,7 @@ const styles = StyleSheet.create ( {
   buttonContainer: {
     flexDirection: "row" as "row",
     justifyContent: "space-between",
+    marginRight: -400,
     marginTop: 320,
   },
   resetButton: {
@@ -152,7 +144,7 @@ const styles = StyleSheet.create ( {
   confirmButton: {
     backgroundColor: "#007BFF",
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 10,
     width: "45%",
     alignItems: "center",
   },

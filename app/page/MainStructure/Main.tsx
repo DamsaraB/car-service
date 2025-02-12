@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, GestureResponderEvent } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-
 import Home from "../Main/Home";
 import Test2 from "../Main/Services";
 import Test3 from "../Main/Chat";
