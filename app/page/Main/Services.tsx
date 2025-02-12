@@ -1,42 +1,94 @@
 import React from 'react';
 import { View, Text, TextInput, Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import { Ionicons, FontAwesome5 } from '@expo/vector-icons';
+import { router, useRouter } from "expo-router";
+import Icon from "react-native-vector-icons/FontAwesome";
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 const Services = () => {
-  const services = [
-    { id: 1, name: 'Car Repair', icon: 'car' },
-    { id: 2, name: 'Bike Repair', icon: 'bicycle' },
-    { id: 3, name: 'Car Wash', icon: 'cogs' },
-    { id: 4, name: 'Auto Parts', icon: 'tools' },
-  ];
+
+const handleCar = () => {
+      router.push("/page/Services/CarRepair");
+    };
 
   return (
     <ScrollView style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <Ionicons name="arrow-back" size={24} color="#000"/>
+        <Ionicons name="arrow-back" size={24} color="#000" onPress={() => router.push("/page/MainStructure/Main")} />
         <Text style={styles.headerTitle}>Services</Text>
         <Ionicons name="search" size={24} color="black" style={styles.searchIcon} />
       </View>
       
       {/* Services List */}
-      <View style={styles.servicesList}>
-        {services.map((service) => (
-          <View key={service.id} style={styles.serviceCard}>
-            <FontAwesome5 name={service.icon} size={30} color="black" style={styles.serviceIcon} />
-            <View style={styles.serviceInfo}>
-              <Text style={styles.serviceName}>{service.name}</Text>
-              <Text style={styles.serviceDescription}>Book a time & date\time repair your car</Text>
-              <Text style={styles.bookNow}>Book Now</Text>
-            </View>
+      <ScrollView style={styles.subcontainer}>
 
-            <Text style={styles.serviceRating}></Text>
-            <TouchableOpacity style={styles.arrowButton}>
-              <FontAwesome5 name="arrow-circle-right" size={30} color="black" />
-            </TouchableOpacity>
-          </View>
-        ))}
+      <Text style={styles.cardHeadTitle}>Repairs</Text>
+
+      <View style={styles.card}>
+        <Icon name="car" size={30} color="#000" style={styles.cardIcon} />
+        <View style={styles.cardText}>
+          <Text style={styles.cardTitle}>Car Repair</Text>
+          <Text style={styles.cardSubtitle}>Repair your car</Text>
+          <Text style={styles.cardAction} onPress={handleCar}>Book Now</Text>
+        </View>
+        <TouchableOpacity style={styles.arrowButton}>
+          <Icon name="arrow-right" size={20} color="#000" onPress={handleCar}/>
+        </TouchableOpacity>
       </View>
+
+      <View style={styles.card}>
+        <MaterialCommunityIcons name="motorbike" size={40} color="#000" style={styles.cardIcon} />
+        <View style={styles.cardText}>
+          <Text style={styles.cardTitle}>Motor Bike Repair</Text>
+          <Text style={styles.cardSubtitle}>Repair your Bike</Text>
+          <Text style={styles.cardAction} onPress={handleCar}>Book Now</Text>
+        </View>
+        <TouchableOpacity style={styles.arrowButton}>
+          <Icon name="arrow-right" size={20} color="#000" onPress={handleCar} />
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.card}>
+        <MaterialIcons name="electrical-services" size={40} color="#000" style={styles.cardIcon} />
+        <View style={styles.cardText}>
+          <Text style={styles.cardTitle}>Eletric Vehicle Repair</Text>
+          <Text style={styles.cardSubtitle}>Repair your Bike</Text>
+          <Text style={styles.cardAction} onPress={handleCar}>Book Now</Text>
+        </View>
+        <TouchableOpacity style={styles.arrowButton}>
+          <Icon name="arrow-right" size={20} color="#000" onPress={handleCar}/>
+        </TouchableOpacity>
+      </View>
+
+      <Text style={styles.cardHeadTitle}>Service</Text>
+
+      <View style={styles.card}>
+        <Icon name="wrench" size={30} color="#000" style={styles.cardIcon} />
+        <View style={styles.cardText}>
+          <Text style={styles.cardTitle}>Repairs & Maintainance</Text>
+          <Text style={styles.cardSubtitle}>Book a time & date to repair your car</Text>
+          <Text style={styles.cardAction}>Book Now</Text>
+        </View>
+        <TouchableOpacity style={styles.arrowButton}>
+          <Icon name="arrow-right" size={20} color="#000" />
+        </TouchableOpacity>
+      </View>
+
+          <Text style={styles.cardHeadTitle}>Auto-Parts</Text>
+
+      <View style={styles.card}>
+        <MaterialIcons name="production-quantity-limits" size={30} color="#000" style={styles.cardIcon} />
+        <View style={styles.cardText}>
+          <Text style={styles.cardTitle}>Auto Parts </Text>
+          <Text style={styles.cardSubtitle}>you can purchase auto parts your vehicle</Text>
+        </View>
+        <TouchableOpacity style={styles.arrowButton}>
+          <Icon name="arrow-right" size={20} color="#000" />
+        </TouchableOpacity>
+      </View>
+      </ScrollView>
     </ScrollView>
   );
 };
@@ -52,45 +104,60 @@ const styles = StyleSheet.create({
     padding: 15, 
     backgroundColor: '#fff' },
   headerTitle: { 
-    fontSize: 20, 
+    fontSize: 22, 
     fontWeight: 'bold' },
   searchIcon: { 
     marginRight: 10 },
-  servicesList: { 
-    padding: 15 },
-  serviceCard: { 
-    flexDirection: 'row', 
-    alignItems: 'center', 
-    backgroundColor: '#fff', 
-    padding: 30, 
-    borderRadius: 10, 
-    marginBottom: 10, 
-    shadowColor: '#000', 
-    shadowOpacity: 0.1, 
-    shadowRadius: 5, 
-    elevation: 3 },
-  serviceIcon: { 
-    marginRight: 15 },
-  serviceInfo: { 
-    flex: 1 },
-  serviceName: { 
-    fontSize: 16, 
-    fontWeight: 'bold' },
-  serviceDescription: { 
-    color: '#777', 
-    fontSize: 12 },
-  bookNow: { 
-    color: '#007BFF', 
-    fontWeight: 'bold', 
-    marginTop: 5 },
-  serviceRating: { 
-    fontSize: 14, 
-    fontWeight: 'bold', 
-    marginRight: 10 },
-  arrowButton: { 
-    padding: 8, 
-    backgroundColor: '#E5E5E5', 
-    borderRadius: 20 },
+  subcontainer: {
+    paddingHorizontal: 10,
+    marginTop: 5
+    },
+    icon: {
+      marginRight: 15,
+    },
+    card: {
+      paddingHorizontal: 20,
+      backgroundColor: "#fff",
+      flexDirection: "row",
+      alignItems: "center",
+      padding: 15,
+      borderRadius: 15,
+      shadowColor: "#000",
+      shadowOpacity: 0.1,
+      shadowRadius: 10,
+      elevation: 5,
+      marginBottom: 10,
+    },
+    cardIcon: {
+      marginRight: 15,
+    },
+    cardText: {
+      flex: 1,
+    },
+    cardHeadTitle: {
+      fontSize: 20,
+      marginBottom: 5,
+      marginTop: 10,
+      fontWeight: "bold",
+    },
+    cardTitle: {
+      fontSize: 17,
+      fontWeight: "bold",
+    },
+    cardSubtitle: {
+      color: "#666",
+      fontSize: 12,
+    },
+    cardAction: {
+      fontSize: 14,
+      fontWeight: "bold",
+      color: "#000",
+      marginTop: 5,
+    },
+    arrowButton: {
+      padding: 10,
+    },
+
 });
 
 

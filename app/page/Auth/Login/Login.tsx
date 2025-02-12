@@ -10,10 +10,11 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+  const API_URL = "http://192.168.43.59:8080";
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:8080/login/local", {
+      const response = await axios.post(`${API_URL}/login/local`, {
         email,
         password,
       });

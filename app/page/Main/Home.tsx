@@ -1,10 +1,36 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Text, StyleSheet, TextInput, Image, TouchableOpacity, ScrollView, Alert } from "react-native";
 import { Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import {  TextInput, Image, TouchableOpacity, ScrollView } from 'react-native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
+import Constants from "@/app/config/constants";
 
 export const Home = () => {
+
+  const [firstName, setFirstName] = useState("Guest");
+  const [lastName, setLastName] = useState("");
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const customerId = await AsyncStorage.getItem("customerId");
+        if (!customerId) {
+          Alert.alert("Error", "User not logged in");
+          return;
+        }
+
+        const response = await axios.get(`http://192.168.43.59:8080/api/customer/${customerId}`);  // Replace with actual API URL
+        setFirstName(response.data.firstName);
+        setLastName(response.data.lastName);
+      } catch (error) {
+        console.error("Failed to fetch user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
   return (
     <ScrollView style={styles.container}>
     {/* Header */}
@@ -12,7 +38,8 @@ export const Home = () => {
   <View style={styles.headerTop}>
     <View>
       <Text style={styles.greeting}>Hello, Good Morning!</Text>
-      <Text style={styles.userName}>Kushan Karunarathna</Text>
+      <Text style={styles.userName}>{firstName} {lastName}</Text>
+
     </View>
     <MaterialIcons name="person-pin" size={35} color="white" />
   </View>
@@ -27,7 +54,17 @@ export const Home = () => {
     <View style={styles.servicesSection}>
       <Text style={styles.servicesTitle}>Our Services</Text>
       <View style={styles.serviceCard}>
-        <Image source={{ uri: 'https://source.unsplash.com/300x200/?car-repair' }} style={styles.serviceImage} />
+        <Image source={Constants.assets.garaje} style={styles.serviceImage} />
+        <Text style={styles.serviceText}>WITH 100% ACCURACY On Car Repairs</Text>
+        <TouchableOpacity style={styles.bookButton}>
+          <Text style={styles.bookButtonText}>BOOK NOW</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+
+    <View style={styles.servicesSection}>
+      <View style={styles.serviceCard}>
+        <Image source={Constants.assets.garaje} style={styles.serviceImage} />
         <Text style={styles.serviceText}>WITH 100% ACCURACY On Car Repairs</Text>
         <TouchableOpacity style={styles.bookButton}>
           <Text style={styles.bookButtonText}>BOOK NOW</Text>
@@ -69,7 +106,7 @@ export const Home = () => {
 const styles = StyleSheet.create({
 container: { 
   flex: 1, 
-  backgroundColor: '#F5F5F5' },
+  backgroundColor: '#F3F3F3' },
 header: { 
   padding: 20, 
   backgroundColor: '#0096FF' },
